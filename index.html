@@ -298,113 +298,115 @@ margin-right: auto;
     .overlay-active {
       opacity: 1;
       pointer-events: auto;
-        
+    }
+    
     /* === YENİ ƏLAVƏ OLUNAN VƏ DƏYİŞDİRİLƏN CSS KODLARI BURADADIR === */
 
-    /* 1. Yalnız mobil üçün görünən yeni yuxarı naviqasiya paneli */
-    .top-mobile-nav {
-      display: none; /* Standart olaraq gizli olsun (desktop üçün) */
-}
+    /* "top-mobile-nav-legacy" üçün CSS: Yalnız mobildə gizlət */
+    /* Qeyd: Bu hissəni HTML-dən tamamilə silmişdik, lakin əgər geri gətirilib gizlədilməsi nəzərdə tutulursa, bu kod lazımdır.
+       Ancaq son tələbə əsasən, bu nav tamamilə silinməlidir. */
+    .top-mobile-nav-legacy {
+        display: flex; /* Standart olaraq göstər */
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+        background-color: black;
+        border-bottom: 1px solid #00ff00;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 50;
+    }
+    @media (min-width: 768px) {
+        .top-mobile-nav-legacy {
+            display: none; /* Desktopda gizlət */
+        }
+    }
 
-    /* === YENI ƏLAVƏ OLUNAN CSS KODLARI BURADADIR === */
+    /* Orijinal footer-i mobil cihazlarda gizlət */
+    @media (max-width: 767px) {
+        .left-panel footer {
+            display: none;
+        }
+    }
+
+    /* Sol paneli mobildə gizlət */
+    @media (max-width: 767px) {
+        .left-panel {
+            display: none;
+        }
+    }
     
-    /* 1. Orijinal footer-i mobil cihazlarda gizlət */
-    /* 2. Orijinal footer-i mobil cihazlarda gizlət */
-    .mobile-footer,
-@media (max-width: 767px) {
-.left-panel footer {
-display: none;
-}
-
-      /* 3. Məzmunun footer ilə üst-üstə düşməsinin qarşısını al */
-      /* 3. Sol paneli mobildə gizlət */
-      .left-panel {
-        display: none;
-      }
-
-      /* 4. Məzmunun yeni top panel və footer ilə üst-üstə düşməsinin qarşısını al */
-.main-content {
-        /* padding-bottom: 80px; Bu sətir çıxarıldı, çünki top-mobile-nav silindi */
-        /* padding-top: 70px; Bu sətir çıxarıldı, çünki top-mobile-nav silindi */
+    /* Məzmunun yeni top panel və footer ilə üst-üstə düşməsinin qarşısını al */
+    @media (max-width: 767px) {
+      .main-content {
+        padding-top: 1rem; /* Yuxarıdakı nav silindiyi üçün bu azaldılır */
         padding-bottom: 80px; /* Aşağı footer-in hündürlüyü qədər boşluq */
         margin-left: 0;
       }
+    }
 
-      /* 5. Yuxarı naviqasiya panelini mobildə göstər */
-      .top-mobile-nav { /* Bu hissə tamamilə silinməlidir */
-        display: none; /* Mobil üçün gizlədildi */
-      }
 
-      .top-mobile-nav a { /* Bu hissə də silinməlidir */
-        color: #66ff66;
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: bold;
-        transition: all 0.3s ease;
-      }
+    /* Yalnız mobil üçün görünən yeni footer */
+    .mobile-footer {
+        display: none; /* Standart olaraq gizli olsun (desktop üçün) */
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 100;
+        padding: 0.5rem 1rem;
+    }
+    @media (max-width: 767px) {
+        .mobile-footer {
+            display: block; /* Mobil cihazlarda görünən et */
+        }
+    }
 
-      .top-mobile-nav a:hover { /* Bu hissə də silinməlidir */
-        color: #00ff00;
-        text-shadow: 0 0 8px #00ff00;
-}
-}
+    /* Yeni əlavə olunan Terminal düyməsi üçün stil */
+    .terminal-button-mobile {
+      display: none; /* Standart olaraq gizli olsun (desktop üçün) */
+      width: fit-content; /* Düymənin genişliyi mətnə uyğun olsun */
+      padding: 0.75rem 1.5rem;
+      margin-top: 20px; /* Education kartından bir qədər boşluq */
+      border: 1px solid #00ff00;
+      border-radius: 8px;
+      background-color: transparent;
+      color: #00ff00;
+      text-align: center;
+      font-family: monospace;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    }
 
-    /* 2. Yalnız mobil üçün görünən yeni footer yarat */
-    /* 6. Yalnız mobil üçün görünən yeni footer */
-.mobile-footer {
-display: none; /* Standart olaraq gizli olsun */
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: rgba(0, 0, 0, 0.95);
-z-index: 100;
-      padding: 0.5rem 1rem; /* Padding-i bir az azaltdıq */
-      padding: 0.5rem 1rem;
-}
+    @media (max-width: 767px) {
+        .terminal-button-mobile {
+            display: block; /* Mobil cihazlarda görünən et */
+        }
+    }
 
-@media (max-width: 767px) {
-.mobile-footer {
-display: block; /* Mobil cihazlarda görünən et */
-}
-}
+    .terminal-button-mobile:hover {
+      background-color: #00ff00;
+      color: black;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+      transform: translateY(-2px);
+    }
 
-/* Yeni əlavə olunan düymə üçün stil */
-.terminal-button {
-  display: block;
-  width: fit-content; /* Düymənin genişliyi mətnə uyğun olsun */
-  padding: 0.75rem 1.5rem;
-  margin-top: 20px; /* Education kartından bir qədər boşluq */
-  border: 1px solid #00ff00;
-  border-radius: 8px;
-  background-color: transparent;
-  color: #00ff00;
-  text-align: center;
-  font-family: monospace;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-}
+    /* Flexbox utilities for alignment */
+    .flex-center-x {
+      display: flex;
+      justify-content: center;
+    }
 
-.terminal-button:hover {
-  background-color: #00ff00;
-  color: black;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Flexbox utilities for alignment */
-.flex-center-x {
-  display: flex;
-  justify-content: center;
-}
-
-/* === YENİ KODLARIN SONU === */
 </style>
 </head>
 <body class="bg-black text-green-500 font-mono">
   <div class="overlay" id="overlay"></div>
+
   <div class="main-container">
 
 <aside class="left-panel bg-black flex flex-col" id="leftPanel">
@@ -461,8 +463,8 @@ display: block; /* Mobil cihazlarda görünən et */
 </div>
 </div>
 
-<div class="flex flex-col items-start gap-6 w-full px-4">
-    <a href="terminal.html" class="terminal-button">
+<div class="flex flex-col items-start gap-6 w-full px-4 terminal-button-wrapper-mobile">
+    <a href="terminal.html" class="terminal-button-mobile">
         > Open Terminal <span class="cursor"></span>
     </a>
 </div>
