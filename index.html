@@ -106,20 +106,9 @@
       left: 0;
       bottom: 0;
       z-index: 20;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: black;
       overflow-y: auto;
-    }
-    @media (min-width: 768px) {
-      .left-panel {
-        transform: translateX(0);
-        background-color: black;
-      }
-    }
-    
-    .left-panel-open {
-      transform: translateX(0);
+      transition: transform 0.3s ease;
     }
     
     /* Improved Navigation */
@@ -258,61 +247,63 @@
         margin-right: auto;
       }
     }
-    
-    /* Mobile menu button */
-    .menu-toggle {
-      display: block;
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 30;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid #00ff00;
-      color: #00ff00;
-      padding: 0.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    @media (min-width: 768px) {
-      .menu-toggle {
-        display: none;
-      }
-    }
-    
-    /* Overlay for mobile menu */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 10;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    
-    .overlay-active {
-      opacity: 1;
-      pointer-events: auto;
+        
+    /* === YENİ ƏLAVƏ OLUNAN VƏ DƏYİŞDİRİLƏN CSS KODLARI BURADADIR === */
+
+    /* 1. Yalnız mobil üçün görünən yeni yuxarı naviqasiya paneli */
+    .top-mobile-nav {
+      display: none; /* Standart olaraq gizli olsun (desktop üçün) */
     }
 
-    /* === YENI ƏLAVƏ OLUNAN CSS KODLARI BURADADIR === */
-    
-    /* 1. Orijinal footer-i mobil cihazlarda gizlət */
+    /* 2. Orijinal footer-i mobil cihazlarda gizlət */
+    .mobile-footer,
     @media (max-width: 767px) {
       .left-panel footer {
         display: none;
       }
       
-      /* 3. Məzmunun footer ilə üst-üstə düşməsinin qarşısını al */
+      /* 3. Sol paneli mobildə gizlət */
+      .left-panel {
+        display: none;
+      }
+
+      /* 4. Məzmunun yeni top panel və footer ilə üst-üstə düşməsinin qarşısını al */
       .main-content {
-        padding-bottom: 80px; /* Footer-in hündürlüyü qədər boşluq */
+        padding-top: 70px; /* Yuxarı panelin hündürlüyü qədər boşluq */
+        padding-bottom: 80px; /* Aşağı footer-in hündürlüyü qədər boşluq */
+        margin-left: 0;
+      }
+
+      /* 5. Yuxarı naviqasiya panelini mobildə göstər */
+      .top-mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.98);
+        border-bottom: 1px solid #00ff0055;
+        z-index: 100;
+        padding: 1rem;
+      }
+
+      .top-mobile-nav a {
+        color: #66ff66;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .top-mobile-nav a:hover {
+        color: #00ff00;
+        text-shadow: 0 0 8px #00ff00;
       }
     }
 
-    /* 2. Yalnız mobil üçün görünən yeni footer yarat */
+    /* 6. Yalnız mobil üçün görünən yeni footer */
     .mobile-footer {
       display: none; /* Standart olaraq gizli olsun */
       position: fixed;
@@ -321,7 +312,7 @@
       width: 100%;
       background-color: rgba(0, 0, 0, 0.95);
       z-index: 100;
-      padding: 0.5rem 1rem; /* Padding-i bir az azaltdıq */
+      padding: 0.5rem 1rem;
     }
 
     @media (max-width: 767px) {
@@ -333,11 +324,11 @@
   </style>
 </head>
 <body class="bg-black text-green-500 font-mono">
-  <button class="menu-toggle" id="menuToggle">
-    <i class="fas fa-bars"></i>
-  </button>
 
-  <div class="overlay" id="overlay"></div>
+  <nav class="top-mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="terminal.html">Terminal</a>
+  </nav>
 
   <div class="main-container">
 
@@ -415,9 +406,5 @@
     </div>
   </footer>
 
-  <script>
-    // Matrix Code Rain Effect - Bu hissədə dəyişiklik yoxdur
-    // ...
-  </script>
 </body>
 </html>
