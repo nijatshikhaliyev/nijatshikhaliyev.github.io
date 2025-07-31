@@ -324,28 +324,18 @@ display: none;
 
       /* 4. Məzmunun yeni top panel və footer ilə üst-üstə düşməsinin qarşısını al */
 .main-content {
-        padding-bottom: 80px; /* Footer-in hündürlüyü qədər boşluq */
-        padding-top: 70px; /* Yuxarı panelin hündürlüyü qədər boşluq */
+        /* padding-bottom: 80px; Bu sətir çıxarıldı, çünki top-mobile-nav silindi */
+        /* padding-top: 70px; Bu sətir çıxarıldı, çünki top-mobile-nav silindi */
         padding-bottom: 80px; /* Aşağı footer-in hündürlüyü qədər boşluq */
         margin-left: 0;
       }
 
       /* 5. Yuxarı naviqasiya panelini mobildə göstər */
-      .top-mobile-nav {
-        display: flex;
-        justify-content: space-between; /* Changed to space-between */
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.98);
-        border-bottom: 1px solid #00ff0055;
-        z-index: 100;
-        padding: 1rem;
+      .top-mobile-nav { /* Bu hissə tamamilə silinməlidir */
+        display: none; /* Mobil üçün gizlədildi */
       }
 
-      .top-mobile-nav a {
+      .top-mobile-nav a { /* Bu hissə də silinməlidir */
         color: #66ff66;
         text-decoration: none;
         font-size: 1.1rem;
@@ -353,7 +343,7 @@ display: none;
         transition: all 0.3s ease;
       }
 
-      .top-mobile-nav a:hover {
+      .top-mobile-nav a:hover { /* Bu hissə də silinməlidir */
         color: #00ff00;
         text-shadow: 0 0 8px #00ff00;
 }
@@ -378,16 +368,44 @@ z-index: 100;
 display: block; /* Mobil cihazlarda görünən et */
 }
 }
+
+/* Yeni əlavə olunan düymə üçün stil */
+.terminal-button {
+  display: block;
+  width: fit-content; /* Düymənin genişliyi mətnə uyğun olsun */
+  padding: 0.75rem 1.5rem;
+  margin-top: 20px; /* Education kartından bir qədər boşluq */
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #00ff00;
+  text-align: center;
+  font-family: monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.terminal-button:hover {
+  background-color: #00ff00;
+  color: black;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Flexbox utilities for alignment */
+.flex-center-x {
+  display: flex;
+  justify-content: center;
+}
+
 /* === YENİ KODLARIN SONU === */
 </style>
 </head>
 <body class="bg-black text-green-500 font-mono">
   <div class="overlay" id="overlay"></div>
-  <nav class="top-mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="terminal.html">Terminal</a> </nav>
-
-<div class="main-container">
+  <div class="main-container">
 
 <aside class="left-panel bg-black flex flex-col" id="leftPanel">
 <div class="flex-grow">
@@ -442,6 +460,13 @@ display: block; /* Mobil cihazlarda görünən et */
 </div>
 </div>
 </div>
+
+<div class="flex flex-col items-start gap-6 w-full px-4">
+    <a href="terminal.html" class="terminal-button">
+        > Open Terminal <span class="cursor"></span>
+    </a>
+</div>
+
 </div>
 </main>
 </div>
