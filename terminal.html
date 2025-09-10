@@ -134,6 +134,7 @@
               <span class='text-blue-300'>about</span>       - Show information about Nijat<br>
               <span class='text-blue-300'>skills</span>      - Show technical skills<br>
               <span class='text-blue-300'>education</span>   - Show education background<br>
+              <span class='text-blue-300'>experience</span>   - Show work experience<br>
               <span class='text-blue-300'>contact</span>     - Show contact information<br>
               <span class='text-blue-300'>clear</span>       - Clear the terminal<br>
               <span class='text-blue-300'>home</span>        - Return to homepage (index.html)<br>
@@ -161,7 +162,6 @@
               - Penetration Testing<br>
               - Kali Linux<br>
               - Network Security<br>
-              - Web Application Security<br>
               - Python, HTML/CSS Scripting<br>
             </div>
           `;
@@ -174,7 +174,25 @@
             <div class='mb-4'>
               <span class='text-blue-300'>Education:</span><br><br>
               Azerbaijan State Oil and Industry University<br>
-              Process Automation Engineering (2024-Present)<br><br>
+              Process Automation Engineering (2024-Present)<br>
+
+              MilliSec<br>
+              Red Team (2025-Present)<br>
+            </div>
+          `;
+        }
+      },
+      experience: {
+        description: "Show work experience",
+        execute: () => {
+          return `
+            <div class='mb-4'>
+              <span class='text-blue-300'>Experience:</span><br><br>
+              ABB Sanaye Branch<br>
+              Intern (01.2025-04.2025)<br>
+              • Giving correct queue receipts for services.<br>
+              • Helping customers to pay at the payment terminal.<br>
+              • Assisting in the operation of the reception at the entrance of the branch.<br>
             </div>
           `;
         }
