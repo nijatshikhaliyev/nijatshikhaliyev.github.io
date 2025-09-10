@@ -402,6 +402,18 @@ margin-right: auto;
       justify-content: center;
     }
 
+    /* === QR KOD ÜÇÜN YENİ CSS STİLLƏRİ === */
+    .footer-qr-code {
+      display: block; /* Mərkəzləşdirmək üçün blok elementə çevirir */
+      width: 100px; /* QR kodun eni */
+      height: 100px; /* QR kodun hündürlüyü */
+      margin: 1.5rem auto 0; /* Yuxarıdan boşluq, avtomatik mərkəzləşdirmə */
+      border: 1px solid #00ff0055; /* Saytın üslubuna uyğun çərçivə */
+      padding: 5px; /* Çərçivə ilə şəkil arasında boşluq */
+      border-radius: 8px; /* Kənarları yumşaltmaq üçün */
+      background-color: white; /* QR kodun arxa fonunu ağ edir ki, rahat oxunsun */
+    }
+
 </style>
 </head>
 <body class="bg-black text-green-500 font-mono">
@@ -437,6 +449,7 @@ margin-right: auto;
 </svg>
 </a>
 </div>
+<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
 </footer>
 </aside>
 
@@ -488,6 +501,7 @@ margin-right: auto;
 </svg>
 </a>
 </div>
+<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
 </footer>
 
   <script>
