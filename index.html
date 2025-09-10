@@ -402,16 +402,17 @@ margin-right: auto;
       justify-content: center;
     }
 
-    /* === QR KOD ÜÇÜN YENİ CSS STİLLƏRİ === */
+    /* === QR KOD ÜÇÜN DƏYİŞDİRİLMİŞ CSS STİLLƏRİ === */
     .footer-qr-code {
-      display: block; /* Mərkəzləşdirmək üçün blok elementə çevirir */
-      width: 100px; /* QR kodun eni */
-      height: 100px; /* QR kodun hündürlüyü */
-      margin: 1.5rem auto 0; /* Yuxarıdan boşluq, avtomatik mərkəzləşdirmə */
-      border: 1px solid #00ff0055; /* Saytın üslubuna uyğun çərçivə */
-      padding: 5px; /* Çərçivə ilə şəkil arasında boşluq */
-      border-radius: 8px; /* Kənarları yumşaltmaq üçün */
-      background-color: white; /* QR kodun arxa fonunu ağ edir ki, rahat oxunsun */
+      display: block;
+      width: 100px;
+      height: 100px;
+      /* Margin-top ləğv edilib, margin-bottom əlavə edildi */
+      margin: 0 auto 1.5rem; 
+      border: 1px solid #00ff0055;
+      padding: 5px;
+      border-radius: 8px;
+      background-color: white;
     }
 
 </style>
@@ -435,6 +436,8 @@ margin-right: auto;
 </div>
 
 <footer class="mt-auto">
+<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
+
 <div class="footer-icons">
 <a href="https://github.com/nijatshikhaliyev" target="_blank" aria-label="GitHub">
 <i class="fab fa-github"></i>
@@ -449,7 +452,6 @@ margin-right: auto;
 </svg>
 </a>
 </div>
-<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
 </footer>
 </aside>
 
@@ -487,6 +489,8 @@ margin-right: auto;
 </div>
 
 <footer class="mobile-footer">
+<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
+
 <div class="footer-icons">
 <a href="https://github.com/nijatshikhaliyev" target="_blank" aria-label="GitHub">
 <i class="fab fa-github"></i>
@@ -501,7 +505,6 @@ margin-right: auto;
 </svg>
 </a>
 </div>
-<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
 </footer>
 
   <script>
