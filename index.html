@@ -303,8 +303,6 @@ margin-right: auto;
     /* === YENİ ƏLAVƏ OLUNAN VƏ DƏYİŞDİRİLƏN CSS KODLARI BURADADIR === */
 
     /* "top-mobile-nav-legacy" üçün CSS: Yalnız mobildə gizlət */
-    /* Qeyd: Bu hissəni HTML-dən tamamilə silmişdik, lakin əgər geri gətirilib gizlədilməsi nəzərdə tutulursa, bu kod lazımdır.
-       Ancaq son tələbə əsasən, bu nav tamamilə silinməlidir. */
     .top-mobile-nav-legacy {
         display: flex; /* Standart olaraq göstər */
         justify-content: space-around;
@@ -341,8 +339,8 @@ margin-right: auto;
     /* Məzmunun yeni top panel və footer ilə üst-üstə düşməsinin qarşısını al */
     @media (max-width: 767px) {
       .main-content {
-        padding-top: 1rem; /* Yuxarıdakı nav silindiyi üçün bu azaldılır */
-        padding-bottom: 80px; /* Aşağı footer-in hündürlüyü qədər boşluq */
+        padding-top: 1rem; 
+        padding-bottom: 80px;
         margin-left: 0;
       }
     }
@@ -368,9 +366,9 @@ margin-right: auto;
     /* Yeni əlavə olunan Terminal düyməsi üçün stil */
     .terminal-button-mobile {
       display: none; /* Standart olaraq gizli olsun (desktop üçün) */
-      width: fit-content; /* Düymənin genişliyi mətnə uyğun olsun */
+      width: fit-content;
       padding: 0.75rem 1.5rem;
-      margin-top: 20px; /* Education kartından bir qədər boşluq */
+      margin-top: 20px;
       border: 1px solid #00ff00;
       border-radius: 8px;
       background-color: transparent;
@@ -385,7 +383,7 @@ margin-right: auto;
 
     @media (max-width: 767px) {
         .terminal-button-mobile {
-            display: block; /* Mobil cihazlarda görünən et */
+            display: block;
         }
     }
 
@@ -407,12 +405,23 @@ margin-right: auto;
       display: block;
       width: 100px;
       height: 100px;
-      /* Margin-top ləğv edilib, margin-bottom əlavə edildi */
       margin: 0 auto 1.5rem; 
       border: 1px solid #00ff0055;
       padding: 5px;
       border-radius: 8px;
       background-color: white;
+    }
+    
+    /* === YALNIZ MOBİL ÜÇÜN OLAN QR KOD KAPSAYICISI === */
+    .mobile-qr-container {
+        display: none; /* Desktop-da gizli */
+    }
+
+    @media (max-width: 767px) {
+        .mobile-qr-container {
+            display: block; /* Mobil-də görünən */
+            padding-top: 2rem; /* Yuxarıdakı məzmundan aralı saxlamaq üçün */
+        }
     }
 
 </style>
@@ -485,12 +494,15 @@ margin-right: auto;
 </div>
 
 </div>
+
+<div class="mobile-qr-container">
+    <img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
+</div>
+
 </main>
 </div>
 
 <footer class="mobile-footer">
-<img src="qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
-
 <div class="footer-icons">
 <a href="https://github.com/nijatshikhaliyev" target="_blank" aria-label="GitHub">
 <i class="fab fa-github"></i>
