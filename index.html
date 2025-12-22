@@ -97,10 +97,10 @@ flex-grow: 1;
 
 /* Custom styles for left panel */
 .left-panel {
-width: 280px;
-min-width: 280px;
+width: 320px;
+min-width: 320px;
 border-right: 1px solid #00ff0055;
-padding: 1.5rem;
+padding: 1rem;
 position: fixed;
 top: 0;
 left: 0;
@@ -232,8 +232,8 @@ width: 100%;
 @media (min-width: 768px) {
 .main-content {
 padding: 2.5rem;
-margin-left: 280px; /* Account for fixed sidebar */
-width: calc(100% - 280px);
+margin-left: 320px; /* Account for fixed sidebar */
+width: calc(100% - 320px);
 }
 }
 
@@ -447,12 +447,10 @@ margin-right: auto;
 <footer class="mt-auto">
 <img src="images/qrcode.svg" alt="Saytın QR Kodu" class="footer-qr-code">
 
-<div style="width: 100%; overflow: hidden; display: flex; justify-content: center; margin-bottom: 20px;">
-    <div style="transform: scale(0.85); transform-origin: center center; width: 300px;">
-        <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634" 
-            style='border:none; width: 300px; height: 150px;'>
-        </iframe>
-    </div>
+<div style="width: 100%; display: flex; justify-content: center;">
+    <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634" 
+        style='border:none; width: 300px; height: 150px;'>
+    </iframe>
 </div>
 <div class="footer-icons">
 <a href="https://github.com/nijatshikhaliyev" target="_blank" aria-label="GitHub">
