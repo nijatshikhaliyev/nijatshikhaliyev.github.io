@@ -14,7 +14,6 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        /* Glitch Animation */
         .glitch {
             position: relative;
             color: #fff;
@@ -75,25 +74,24 @@
         .nav-link { color: #fff; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; border: 1px solid transparent; padding: 5px 10px; transition: 0.3s; }
         .nav-link:hover { border-color: #fff; }
 
-        /* TRYHACKME IFRAME - TAM SIMMETRIK HƏLL */
-        .thm-wrapper {
+        /* FINAL SYMMETRY SOLUTION */
+        .thm-aligner {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin: 3rem 0;
+            margin: 40px 0;
             overflow: hidden;
         }
         
-        .thm-wrapper iframe {
-            width: 380px; /* Enini məhdudlaşdırdım ki, mərkəzi tutmaq asan olsun */
-            height: 90px;
+        .thm-aligner iframe {
+            width: 320px; /* Iframe-in enini sıxdım */
+            height: 85px;
             border: none;
-            /* Iframe daxilindəki sola meyilliyi düzəltmək üçün vizual sürüşdürmə */
-            transform: translateX(10px); 
+            /* Iframe-in daxili boşluğunu kompensasiya etmək üçün sağa çəkirik */
+            margin-left: 55px; 
         }
 
-        .thm-icon { width: 24px; height: 24px; fill: #fff; transition: 0.3s; }
-        .social-link:hover .thm-icon, .social-link:hover i { transform: scale(1.2); opacity: 0.8; }
+        .social-link:hover i, .social-link:hover svg { transform: scale(1.1); }
     </style>
 </head>
 <body class="px-6">
@@ -107,7 +105,6 @@
     </header>
 
     <main class="max-w-3xl mx-auto">
-        
         <section class="flex flex-col md:flex-row items-center gap-8 mb-12">
             <img src="images/profile.png" alt="Profile" class="profile-img" />
             <div class="terminal-box flex-grow">
@@ -149,22 +146,16 @@
             </div>
         </div>
 
-        <div class="thm-wrapper">
+        <div class="thm-aligner">
             <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634"></iframe>
         </div>
 
         <footer class="border-t border-white py-10 flex flex-col items-center gap-4">
             <div class="flex gap-10 items-center">
-                <a href="https://github.com/nijatshikhaliyev" target="_blank" class="social-link text-white text-2xl">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/nijatshikhaliyev" target="_blank" class="social-link text-white text-2xl">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://tryhackme.com/p/nijatshikhaliyev" target="_blank" class="social-link">
-                    <svg class="thm-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 0L2.1 3v6.3c0 6.6 4.2 12.8 9.9 14.7 5.7-1.9 9.9-8.1 9.9-14.7V3L12 0zm0 4.5c1.1 0 2.1.3 3 1 .9.7 1.5 1.7 1.8 2.8.3 1.1.3 2.3 0 3.4-.3 1.1-1 2-1.8 2.8-.8.8-1.7 1.4-2.8 1.8-1.1.3-2.3.3-3.4 0-1.1-.3-2.1-.9-2.8-1.8-.8-.8-1.4-1.7-1.8-2.8-.3-1.1-.3-2.3 0-3.4.3-1.1 1-2 1.8-2.8.9-.7 1.9-1 3-1z"/>
-                    </svg>
+                <a href="https://github.com/nijatshikhaliyev" target="_blank" class="text-white text-2xl social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nijatshikhaliyev" target="_blank" class="text-white text-2xl social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://tryhackme.com/p/nijatshikhaliyev" target="_blank" class="text-white social-link">
+                    <svg style="width:24px; height:24px; fill:white;" viewBox="0 0 24 24"><path d="M12 0L2.1 3v6.3c0 6.6 4.2 12.8 9.9 14.7 5.7-1.9 9.9-8.1 9.9-14.7V3L12 0zm0 4.5c1.1 0 2.1.3 3 1 .9.7 1.5 1.7 1.8 2.8.3 1.1.3 2.3 0 3.4-.3 1.1-1 2-1.8 2.8-.8.8-1.7 1.4-2.8 1.8-1.1.3-2.3.3-3.4 0-1.1-.3-2.1-.9-2.8-1.8-.8-.8-1.4-1.7-1.8-2.8-.3-1.1-.3-2.3 0-3.4.3-1.1 1-2 1.8-2.8.9-.7 1.9-1 3-1z"/></svg>
                 </a>
             </div>
             <p class="text-white text-xs font-bold tracking-widest uppercase mt-4">© 2026 NS / Security & Automation</p>
