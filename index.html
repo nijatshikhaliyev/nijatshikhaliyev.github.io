@@ -76,22 +76,24 @@
         .nav-link { color: #fff; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; border: 1px solid transparent; padding: 5px 10px; transition: 0.3s; }
         .nav-link:hover { border-color: #fff; }
 
-        /* TryHackMe Iframe Simmetriya */
+        /* TryHackMe Iframe - Tam Mərkəzləmə üçün düzəliş */
         .thm-wrapper {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Yatay mərkəzləmə */
             align-items: center;
             width: 100%;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
+            /* Əgər hələ də sola yaxın görünürsə, iframe-in öz daxili asimmetriyasını düzəltmək üçün: */
+            padding-left: 15px; 
         }
+        
         .thm-wrapper iframe {
             width: 100%;
-            max-width: 450px; /* Badge-in düzgün görünməsi üçün ideal ölçü */
+            max-width: 480px; 
             height: 100px;
             border: none;
         }
 
-        /* Custom TryHackMe Icon Styling */
         .thm-icon {
             width: 24px;
             height: 24px;
