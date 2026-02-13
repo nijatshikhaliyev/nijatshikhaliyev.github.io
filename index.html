@@ -1,23 +1,74 @@
-<style>
-    /* TRYHACKME TAM YIĞCAM VƏ SİMMETRİK */
-    .thm-compact-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin: 20px 0; /* Aşağı-yuxarı məsafəni azaltdım */
-        overflow: hidden;
-    }
-    
-    .thm-compact-container iframe {
-        width: 300px; /* Eni daha da optimallaşdırdım */
-        height: 65px;  /* Hündürlüyü kəsdim ki, aşağı uzanmasın */
-        border: none;
-        /* Daxili mətni mərkəzə çəkmək üçün vizual tənzimləmə */
-        margin-left: 45px; 
-        overflow: hidden;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en" class="bg-black text-white">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="icon" type="image/png" href="images/Logo.png">
+    <title>Home | Nijat Shikhaliyev</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+        }
 
-<div class="thm-compact-container">
-    <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634" scrolling="no"></iframe>
-</div>
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        @media (min-width: 768px) { .glitch { font-size: 1.5rem; } }
+
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            background: black;
+            clip: rect(0, 900px, 0, 0);
+        }
+        .glitch::before { animation: glitchTop 3s infinite linear alternate-reverse; text-shadow: -1px 0 #fff; }
+        .glitch::after { animation: glitchBottom 2s infinite linear alternate-reverse; text-shadow: 1px 0 #fff; }
+
+        @keyframes glitchTop { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(0, 9999px, 10px, 0); } }
+        @keyframes glitchBottom { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(15px, 9999px, 20px, 0); } }
+
+        .terminal-box {
+            border: 1px solid #fff;
+            padding: 20px;
+            background: transparent;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .info-card {
+            background: #000;
+            border: 1px solid #333;
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+        .info-card:hover { border-color: #fff; }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background: #fff;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        header { border-bottom: 1px solid #fff; padding: 20px 0; margin-bottom: 40
