@@ -14,15 +14,16 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        /* White Glitch animation */
+        /* White Glitch effect for header */
         .glitch {
             position: relative;
             color: #fff;
             font-weight: bold;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
+        @media (min-width: 768px) { .glitch { font-size: 1.5rem; } }
 
         .glitch::before, .glitch::after {
             content: attr(data-text);
@@ -33,69 +34,36 @@
             background: black;
             clip: rect(0, 900px, 0, 0);
         }
+        .glitch::before { animation: glitchTop 3s infinite linear alternate-reverse; text-shadow: -2px 0 #444; }
+        .glitch::after { animation: glitchBottom 2s infinite linear alternate-reverse; text-shadow: 2px 0 #888; }
 
-        .glitch::before {
-            animation: glitchTop 3s infinite linear alternate-reverse;
-            text-shadow: -2px 0 white;
-        }
+        @keyframes glitchTop { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(0, 9999px, 10px, 0); } }
+        @keyframes glitchBottom { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(15px, 9999px, 20px, 0); } }
 
-        .glitch::after {
-            animation: glitchBottom 2s infinite linear alternate-reverse;
-            text-shadow: 2px 0 #444;
-        }
-
-        @keyframes glitchTop {
-            0%, 100% { clip: rect(0, 9999px, 0, 0); }
-            10% { clip: rect(0, 9999px, 10px, 0); }
-            20% { clip: rect(0, 9999px, 5px, 0); }
-        }
-
-        @keyframes glitchBottom {
-            0%, 100% { clip: rect(0, 9999px, 0, 0); }
-            10% { clip: rect(15px, 9999px, 20px, 0); }
-            20% { clip: rect(10px, 9999px, 30px, 0); }
-        }
-
-        /* Minimalist Terminal Box */
+        /* Terminal Style Box */
         .terminal-box {
             border: 1px solid #333;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 4px;
-            transition: border 0.3s ease;
-        }
-        
-        .terminal-box:hover {
-            border-color: #fff;
         }
 
-        /* Profile Image Monochromatic */
+        /* Profile Image - Colors Kept */
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #fff;
-            filter: grayscale(100%);
-            transition: filter 0.5s ease;
         }
 
-        .profile-img:hover {
-            filter: grayscale(0%);
-        }
-
-        /* Card Styling */
         .info-card {
             background: #000;
             border: 1px solid #222;
-            padding: 24px;
-            transition: all 0.3s ease;
+            padding: 20px;
+            transition: border-color 0.3s;
         }
-
-        .info-card:hover {
-            border-color: #fff;
-            transform: translateY(-5px);
-        }
+        .info-card:hover { border-color: #fff; }
 
         .cursor {
             display: inline-block;
@@ -103,51 +71,19 @@
             height: 1.2rem;
             background: #fff;
             animation: blink 1s infinite;
-            vertical-align: middle;
         }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Navigation Header */
-        header {
-            border-bottom: 1px solid #222;
-            padding: 20px 0;
-            margin-bottom: 40px;
-        }
-
-        .nav-link {
-            color: #888;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-link:hover {
-            color: #fff;
-        }
-
-        .qr-code {
-            filter: invert(100%); /* Qara fon üçün QR kodu ağ edir */
-            width: 80px;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-        
-        .qr-code:hover {
-            opacity: 1;
-        }
-
+        header { border-bottom: 1px solid #222; padding: 20px 0; margin-bottom: 40px; }
+        .nav-link { color: #888; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; }
+        .nav-link:hover { color: #fff; }
     </style>
 </head>
-<body class="px-6 md:px-0">
+<body class="px-6">
 
     <header class="max-w-4xl mx-auto flex justify-between items-center">
-        <div class="glitch" data-text="NIJAT">NIJAT</div>
-        <nav class="space-x-6">
+        <div class="glitch" data-text="NIJAT SHIKHALIYEV">NIJAT SHIKHALIYEV</div>
+        <nav class="space-x-4">
             <a href="index.html" class="nav-link">Home</a>
             <a href="terminal.html" class="nav-link">Terminal</a>
         </nav>
@@ -155,59 +91,65 @@
 
     <main class="max-w-3xl mx-auto">
         
-        <section class="flex flex-col md:flex-row items-center gap-8 mb-16">
+        <section class="flex flex-col md:flex-row items-center gap-8 mb-12">
             <img src="images/profile.png" alt="Profile" class="profile-img" />
             <div class="terminal-box flex-grow">
-                <p class="text-gray-500 mb-2">// identity</p>
-                <h1 class="text-2xl font-bold">Nijat Shikhaliyev <span class="cursor"></span></h1>
-                <p class="text-gray-400 mt-2">Process Automation Engineer & Red Teamer</p>
+                <p class="text-gray-500 text-xs mb-1"># whoami</p>
+                <h1 class="text-xl font-bold">Nijat Shikhaliyev <span class="cursor"></span></h1>
+                <p class="text-gray-400 text-sm mt-1">Process Automation Engineer & Red Teamer</p>
+                <div class="mt-4 flex gap-4 text-gray-500">
+                    <i class="fas fa-microchip" title="Automation"></i>
+                    <i class="fas fa-user-secret" title="Red Teaming"></i>
+                    <i class="fas fa-code" title="Development"></i>
+                </div>
             </div>
         </section>
 
-        <div class="grid grid-cols-1 gap-8 mb-16">
-            
+        <div class="space-y-6 mb-16">
             <div class="info-card">
-                <h2 class="text-white text-xl mb-4 border-b border-gray-800 pb-2">Education</h2>
-                <div class="mb-6">
+                <h2 class="text-white text-lg mb-4 opacity-70 italic font-mono">> Education</h2>
+                <div class="mb-4">
                     <p class="text-white font-bold">Azerbaijan State Oil and Industry University</p>
-                    <p class="text-gray-400">Process Automation Engineer</p>
-                    <p class="text-gray-500 text-sm italic">2024 - Present</p>
+                    <p class="text-gray-400 text-sm">Process Automation Engineer</p>
+                    <p class="text-gray-600 text-xs">2024 - Present</p>
                 </div>
                 <div>
                     <p class="text-white font-bold">MilliSec</p>
-                    <p class="text-gray-400">Red Team</p>
-                    <p class="text-gray-500 text-sm italic">2025 - Present</p>
+                    <p class="text-gray-400 text-sm">Red Team</p>
+                    <p class="text-gray-600 text-xs">2025 - Present</p>
                 </div>
             </div>
 
             <div class="info-card">
-                <h2 class="text-white text-xl mb-4 border-b border-gray-800 pb-2">Experience</h2>
-                <div>
-                    <p class="text-white font-bold">ABB Sanaye Branch</p>
-                    <p class="text-gray-400 mb-2">Intern</p>
-                    <ul class="text-gray-500 text-sm space-y-1">
-                        <li>• Service queue management and optimization.</li>
-                        <li>• Customer assistance at payment terminals.</li>
-                        <li>• Front-desk operations support.</li>
-                    </ul>
-                    <p class="text-gray-500 text-sm italic mt-2">01.2025 - 04.2025</p>
+                <h2 class="text-white text-lg mb-4 opacity-70 italic font-mono">> Experience</h2>
+                <p class="text-white font-bold">ABB Sanaye Branch</p>
+                <p class="text-gray-400 text-sm mb-2">Intern</p>
+                <ul class="text-gray-500 text-xs space-y-1">
+                    <li>• Service queue management and optimization.</li>
+                    <li>• Customer assistance at payment terminals.</li>
+                </ul>
+                <p class="text-gray-600 text-xs mt-2">01.2025 - 04.2025</p>
+            </div>
+
+            <div class="info-card">
+                <h2 class="text-white text-lg mb-4 opacity-70 italic font-mono">> Security Profiles</h2>
+                <div class="flex items-center gap-4">
+                    <a href="https://tryhackme.com/p/nijatshikhaliyev" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>TryHackMe Profile</span>
+                    </a>
                 </div>
             </div>
-
         </div>
 
-        <footer class="border-t border-gray-900 py-10 flex flex-col items-center gap-6">
-            <div class="flex gap-8 text-2xl">
-                <a href="https://github.com/nijatshikhaliyev" class="text-gray-500 hover:text-white transition"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nijatshikhaliyev" class="text-gray-500 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+        <footer class="border-t border-gray-900 py-10 flex flex-col items-center gap-4">
+            <div class="flex gap-6 text-xl">
+                <a href="https://github.com/nijatshikhaliyev" class="text-gray-600 hover:text-white transition"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nijatshikhaliyev" class="text-gray-600 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
             </div>
-            
-            <img src="images/qrcode.svg" alt="QR Code" class="qr-code">
-            
-            <p class="text-gray-600 text-xs tracking-widest uppercase">© 2026 Nijat Shikhaliyev</p>
+            <p class="text-gray-700 text-xs uppercase tracking-widest">© 2026 NS / Security & Automation</p>
         </footer>
 
     </main>
-
 </body>
 </html>
