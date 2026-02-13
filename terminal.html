@@ -71,10 +71,6 @@
     .prompt-symbol {
       color: #ffffff;
     }
-    pre {
-      line-height: 1.2;
-      margin: 10px 0;
-    }
   </style>
 </head>
 <body class="h-screen">
@@ -156,7 +152,7 @@
           return `
             <div class='mb-4'>
               <span class='text-blue-300'>Name:</span> Nijat Shikhaliyev<br>
-              <span class='text-blue-300'>Title:</span> Cybersecurity Researcher | Junior Pentester<br>
+              <span class='text-blue-300'>Title:</span> Cybersecurity | Pentester<br>
             </div>
           `;
         }
@@ -180,4 +176,108 @@
         execute: () => {
           return `
             <div class='mb-4'>
-              <span class='text-blue-300'>Education:</span><br>
+              <span class='text-blue-300'>Education:</span><br><br>
+              Azerbaijan State Oil and Industry University<br>
+              Process Automation Engineering (2024-2028)<br>
+                                                           <br>
+              MilliSec<br>
+              Red Team (09.2025-04.2026)<br>
+            </div>
+          `;
+        }
+      },
+      experience: {
+        description: "Show work experience",
+        execute: () => {
+          return `
+            <div class='mb-4'>
+              <span class='text-blue-300'>Experience:</span><br><br>
+              ABB Sanaye Branch<br>
+              Intern (01.2025-04.2025)<br>
+              • Giving correct queue receipts for services.<br>
+              • Helping customers to pay at the payment terminal.<br>
+              • Assisting in the operation of the reception at the entrance of the branch.<br>
+            </div>
+          `;
+        }
+      },
+      clear: {
+        description: "Clear the terminal",
+        execute: () => {
+          document.getElementById('command-history').innerHTML = '';
+          return '';
+        }
+      },
+      contact: {
+        description: "Show contact information",
+        execute: () => {
+          return `
+            <div class='mb-4'>
+              <span class='text-blue-300'>Contact Information:</span><br><br>
+              GitHub: <a href="https://github.com/nijatshikhaliyev" class="text-blue-400 hover:underline">https://github.com/nijatshikhaliyev</a><br>
+              LinkedIn: <a href="https://linkedin.com/in/nijatshikhaliyev" class="text-blue-400 hover:underline">https://linkedin.com/in/nijatshikhaliyev</a><br>
+              Email: <span class='text-blue-300'>nijatshikhaliyev@mail.ru</span><br>
+            </div>
+          `;
+        }
+      }
+    };
+
+    const commandInput = document.getElementById('command-input');
+    const commandHistory = document.getElementById('command-history');
+    const terminalBody = document.getElementById('terminal-body');
+    const cursor = document.getElementById('input-cursor');
+
+    function updateCursorPosition() {
+      const inputWidth = commandInput.value.length * 8; 
+      cursor.style.left = `${inputWidth}px`;
+    }
+
+    commandInput.addEventListener('input', () => {
+      updateCursorPosition();
+    });
+
+    function scrollToBottom() {
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    commandInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const command = commandInput.value.trim();
+        commandInput.value = '';
+        cursor.style.left = '0';
+        
+        commandHistory.innerHTML += `
+          <div class="prompt-line">
+            <span class="text-white">┌──(</span>
+            <span class="prompt-user">root</span>
+            <span class="text-white">$</span>
+            <span class="prompt-user">nijat</span>
+            <span class="text-white">)-[</span>
+            <span class="prompt-path">/root</span>
+            <span class="text-white">]</span>
+          </div>
+          <div class="input-line">
+            <span class="text-white">└─</span>
+            <span class="prompt-symbol">#</span>
+            <span class="command ml-1">${command}</span>
+          </div>
+        `;
+        
+        let output = '';
+        if (command in commands) {
+          output = commands[command].execute();
+        } else if (command) {
+          output = `<div class="output mb-4">Command not found: ${command}<br>Type 'help' for available commands</div>`;
+        }
+        
+        commandHistory.innerHTML += output;
+        scrollToBottom();
+      }
+    });
+
+    scrollToBottom();
+    commandInput.focus();
+  </script>
+</body>
+</html>
