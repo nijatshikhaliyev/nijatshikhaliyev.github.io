@@ -76,6 +76,21 @@
         .nav-link { color: #fff; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; border: 1px solid transparent; padding: 5px 10px; transition: 0.3s; }
         .nav-link:hover { border-color: #fff; }
 
+        /* TryHackMe Iframe Simmetriya */
+        .thm-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 2rem 0;
+        }
+        .thm-wrapper iframe {
+            width: 100%;
+            max-width: 450px; /* Badge-in düzgün görünməsi üçün ideal ölçü */
+            height: 100px;
+            border: none;
+        }
+
         /* Custom TryHackMe Icon Styling */
         .thm-icon {
             width: 24px;
@@ -115,7 +130,7 @@
             </div>
         </section>
 
-        <div class="space-y-6 mb-16">
+        <div class="space-y-6">
             <div class="info-card">
                 <h2 class="text-white text-lg mb-4 font-bold uppercase tracking-tighter underline">Education</h2>
                 <div class="mb-4">
@@ -141,7 +156,11 @@
                 <p class="text-white text-xs mt-2 opacity-60">01.2025 - 04.2025</p>
             </div>
         </div>
-<iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634" style='border:none;'></iframe>
+
+        <div class="thm-wrapper">
+            <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634"></iframe>
+        </div>
+
         <footer class="border-t border-white py-10 flex flex-col items-center gap-4">
             <div class="flex gap-10 items-center">
                 <a href="https://github.com/nijatshikhaliyev" target="_blank" class="social-link text-white text-2xl">
