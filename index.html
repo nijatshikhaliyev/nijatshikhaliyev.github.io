@@ -14,7 +14,7 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        /* High Contrast White Glitch */
+        /* Glitch Animation */
         .glitch {
             position: relative;
             color: #fff;
@@ -44,7 +44,6 @@
             border: 1px solid #fff;
             padding: 20px;
             background: transparent;
-            border-radius: 0px;
         }
 
         .profile-img {
@@ -76,34 +75,25 @@
         .nav-link { color: #fff; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; border: 1px solid transparent; padding: 5px 10px; transition: 0.3s; }
         .nav-link:hover { border-color: #fff; }
 
-        /* TryHackMe Iframe - Tam Mərkəzləmə üçün düzəliş */
+        /* TRYHACKME IFRAME - TAM SIMMETRIK HƏLL */
         .thm-wrapper {
-            display: flex;
-            justify-content: center; /* Yatay mərkəzləmə */
-            align-items: center;
             width: 100%;
-            margin: 2.5rem 0;
-            /* Əgər hələ də sola yaxın görünürsə, iframe-in öz daxili asimmetriyasını düzəltmək üçün: */
-            padding-left: 15px; 
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+            overflow: hidden;
         }
         
         .thm-wrapper iframe {
-            width: 100%;
-            max-width: 480px; 
-            height: 100px;
+            width: 380px; /* Enini məhdudlaşdırdım ki, mərkəzi tutmaq asan olsun */
+            height: 90px;
             border: none;
+            /* Iframe daxilindəki sola meyilliyi düzəltmək üçün vizual sürüşdürmə */
+            transform: translateX(10px); 
         }
 
-        .thm-icon {
-            width: 24px;
-            height: 24px;
-            fill: #fff;
-            transition: transform 0.3s;
-        }
-        .social-link:hover .thm-icon, .social-link:hover i {
-            transform: scale(1.2);
-            opacity: 0.8;
-        }
+        .thm-icon { width: 24px; height: 24px; fill: #fff; transition: 0.3s; }
+        .social-link:hover .thm-icon, .social-link:hover i { transform: scale(1.2); opacity: 0.8; }
     </style>
 </head>
 <body class="px-6">
@@ -168,11 +158,9 @@
                 <a href="https://github.com/nijatshikhaliyev" target="_blank" class="social-link text-white text-2xl">
                     <i class="fab fa-github"></i>
                 </a>
-                
                 <a href="https://www.linkedin.com/in/nijatshikhaliyev" target="_blank" class="social-link text-white text-2xl">
                     <i class="fab fa-linkedin"></i>
                 </a>
-
                 <a href="https://tryhackme.com/p/nijatshikhaliyev" target="_blank" class="social-link">
                     <svg class="thm-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 0L2.1 3v6.3c0 6.6 4.2 12.8 9.9 14.7 5.7-1.9 9.9-8.1 9.9-14.7V3L12 0zm0 4.5c1.1 0 2.1.3 3 1 .9.7 1.5 1.7 1.8 2.8.3 1.1.3 2.3 0 3.4-.3 1.1-1 2-1.8 2.8-.8.8-1.7 1.4-2.8 1.8-1.1.3-2.3.3-3.4 0-1.1-.3-2.1-.9-2.8-1.8-.8-.8-1.4-1.7-1.8-2.8-.3-1.1-.3-2.3 0-3.4.3-1.1 1-2 1.8-2.8.9-.7 1.9-1 3-1z"/>
