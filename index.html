@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* GRID BACKGROUND EFFECT */
+        /* GRID BACKGROUND */
         body {
             background-color: #000;
             background-image: 
@@ -20,10 +20,8 @@
             min-height: 100vh;
             margin: 0;
             position: relative;
-            z-index: 0;
         }
 
-        /* VIGNETTE EFFECT */
         body::after {
             content: "";
             position: fixed;
@@ -36,9 +34,9 @@
             z-index: -1;
         }
 
+        /* GLITCH EFFECT */
         .glitch {
             position: relative;
-            color: #fff;
             font-weight: bold;
             font-size: 1.2rem;
             letter-spacing: 1px;
@@ -61,32 +59,46 @@
         @keyframes glitchTop { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(0, 9999px, 10px, 0); } }
         @keyframes glitchBottom { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(15px, 9999px, 20px, 0); } }
 
-        /* ROTATING BORDER LIGHT EFFECT (COMMON) */
+        /* ROTATING BORDER ON HOVER */
         .rotating-light {
             position: relative;
             overflow: hidden;
             z-index: 1;
+            border: 1px solid #333; /* Default tünd çərçivə */
+            transition: border-color 0.3s;
         }
 
         .rotating-light::before {
             content: '';
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background-image: conic-gradient(transparent, transparent, transparent, #fff);
-            animation: rotateLight 4s linear infinite;
-            top: -25%;
-            left: -25%;
+            width: 200%;
+            height: 200%;
+            /* Çox dar bir işıq nöqtəsi üçün gradient */
+            background-image: conic-gradient(transparent 0deg, transparent 300deg, #fff 360deg);
+            top: -50%;
+            left: -50%;
             z-index: -2;
+            animation: rotateLight 2s linear infinite;
+            animation-play-state: paused; /* Başlanğıcda dayansın */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .rotating-light:hover::before {
+            animation-play-state: running; /* Hover edəndə işləsin */
+            opacity: 1;
+        }
+
+        .rotating-light:hover {
+            border-color: transparent; /* İşıq görünməsi üçün əsas çərçivəni itiririk */
         }
 
         .rotating-light::after {
             content: '';
             position: absolute;
-            inset: 1px;
-            background: rgba(0, 0, 0, 1); /* Full black background to completely block light in the center */
+            inset: 1px; /* Çərçivə qalınlığı (1px) */
+            background: #000;
             z-index: -1;
-            backdrop-filter: blur(2px);
         }
 
         @keyframes rotateLight {
@@ -94,10 +106,9 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* TERMINAL BOX & INFO CARD UPDATES */
-        .terminal-box {
+        /* BOX PADDINGS */
+        .terminal-box, .info-card {
             padding: 20px;
-            /* Border removed here as it's handled by the rotating light effect */
         }
 
         .profile-img {
@@ -106,17 +117,9 @@
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #fff;
-            position: relative;
-            z-index: 2; /* Ensures image is above the light */
+            z-index: 2;
         }
 
-        .info-card {
-            padding: 20px;
-            transition: all 0.2s ease;
-            /* Border removed here as it's handled by the rotating light effect */
-        }
-
-        /* Cursor */
         .cursor {
             display: inline-block;
             width: 8px;
@@ -126,7 +129,6 @@
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* HEADER & FOOTER */
         header { 
             border-bottom: 1px solid #fff; 
             padding: 20px 0; 
@@ -148,20 +150,14 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
             margin: 40px 0;
-            overflow: hidden;
         }
         
         .thm-aligner iframe {
             width: 450px;
             height: 150px;
             border: none;
-            display: block;
-            margin: 0 auto;
         }
-
-        .social-link:hover i, .social-link:hover svg { transform: scale(1.1); }
     </style>
 </head>
 <body class="px-6">
@@ -214,16 +210,21 @@
         </div>
 
         <div class="thm-aligner">
-            <iframe 
-                src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634"  
-                scrolling="no">
-            </iframe>
+            <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634" scrolling="no"></iframe>
         </div>
 
         <footer class="max-w-4xl mx-auto flex flex-col items-center gap-4">
             <div class="flex gap-10 items-center">
-                <a href="https://github.com/nijatshikhaliyev" target="_blank" class="text-white text-2xl social-link"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/nijatshikhaliyev" target="_blank" class="text-white text-2xl social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://tryhackme.com/p/Cyhos" target="_blank" class="text-white social-link" style="width: 24px; height: 24px;">
+                <a href="https://github.com/nijatshikhaliyev" target="_blank" class="text-white text-2xl"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nijatshikhaliyev" target="_blank" class="text-white text-2xl"><i class="fab fa-linkedin"></i></a>
+                <a href="https://tryhackme.com/p/Cyhos" target="_blank" class="text-white">
                     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" height="24" width="24">
-                        <path d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0 -4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a0.625 0.625 0 1 0 0 -1.25H4.761a3.273 3.273 0 0 1 -3.27 -3.27A3.273 3.273 0 0 1 6.59 7.08a0.625 0.625 0 0 0 0.7 -1.035 4.488 4.488 0 0 0 -1.68 -0.69 5.223 5.223 0 0 1 5.096 -4.104 5.221 5.221 0 0 1 5.174 4.57 4.489 4.489 0 0 0 -0.488 0.305 0.625 0.625 0 1 0 0.731 1
+                        <path d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0 -4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a0.625 0.625 0 1 0 0 -1.25H4.761a3.273 3.273 0 0 1 -3.27 -3.27A3.273 3.273 0 0 1 6.59 7.08a0.625 0.625 0 0 0 0.7 -1.035 4.488 4.488 0 0 0 -1.68 -0.69 5.223 5.223 0 0 1 5.096 -4.104 5.221 5.221 0 0 1 5.174 4.57 4.489 4.489 0 0 0 -0.488 0.305 0.625 0.625 0 1 0 0.731 1.013 3.245 3.245 0 0 1 1.912 -0.616 3.278 3.278 0 0 1 3.203 2.61 0.625 0.625 0 0 0 1.225 -0.251 4.533 4.533 0 0 0 -4.428 -3.61 4.54 4.54 0 0 0 -0.958 0.105C16.556 2.328 13.9 0 10.705 0z" fill="#ffffff"></path>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-white text-xs font-bold tracking-widest uppercase mt-4">© 2026 Cyhos</p>
+        </footer>
+    </main>
+</body>
+</html>
