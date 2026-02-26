@@ -59,51 +59,57 @@
         @keyframes glitchTop { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(0, 9999px, 10px, 0); } }
         @keyframes glitchBottom { 0%, 100% { clip: rect(0, 9999px, 0, 0); } 10% { clip: rect(15px, 9999px, 20px, 0); } }
 
-        /* ROTATING BORDER ON HOVER */
+        /* ONE-POINT ROTATING BORDER ON HOVER */
         .rotating-light {
             position: relative;
             overflow: hidden;
             z-index: 1;
-            border: 1px solid #333; /* Default tünd çərçivə */
+            border: 1px solid #222; /* Daha tünd statik çərçivə */
             transition: border-color 0.3s;
         }
 
         .rotating-light::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            /* Çox dar bir işıq nöqtəsi üçün gradient */
-            background-image: conic-gradient(transparent 0deg, transparent 300deg, #fff 360deg);
-            top: -50%;
-            left: -50%;
+            width: 250%; /* Daha böyük sahə ki, künclərdə qırılmasın */
+            height: 250%;
+            /* Cəmi 10 dərəcəlik bir nöqtə/xətt yaradırıq */
+            background-image: conic-gradient(
+                transparent 0deg, 
+                transparent 350deg, 
+                #fff 355deg, 
+                #fff 360deg
+            );
+            top: -75%;
+            left: -75%;
             z-index: -2;
-            animation: rotateLight 2s linear infinite;
-            animation-play-state: paused; /* Başlanğıcda dayansın */
+            animation: rotateLight 1.5s linear infinite;
+            animation-play-state: paused;
             opacity: 0;
             transition: opacity 0.3s;
         }
 
         .rotating-light:hover::before {
-            animation-play-state: running; /* Hover edəndə işləsin */
+            animation-play-state: running;
             opacity: 1;
         }
 
+        /* Hover zamanı default çərçivəni gizlədirik ki, yalnız fırlanan nöqtə qalsın */
         .rotating-light:hover {
-            border-color: transparent; /* İşıq görünməsi üçün əsas çərçivəni itiririk */
+            border-color: transparent;
         }
 
         .rotating-light::after {
             content: '';
             position: absolute;
-            inset: 1px; /* Çərçivə qalınlığı (1px) */
+            inset: 1px; /* Çərçivə qalınlığı */
             background: #000;
             z-index: -1;
         }
 
         @keyframes rotateLight {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* BOX PADDINGS */
