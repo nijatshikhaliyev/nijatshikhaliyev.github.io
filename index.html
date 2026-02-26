@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="icon" type="image/png" href="images/Logo.png">
-    <title>Home | Nijat Shikhaliyev</title>
+    <title>Home | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -14,14 +14,14 @@
             background-image: 
                 linear-gradient(to right, #111 1px, transparent 1px),
                 linear-gradient(to bottom, #111 1px, transparent 1px);
-            background-size: 40px 40px; /* Torun ölçüsü */
+            background-size: 40px 40px;
             color: #fff;
             font-family: 'Courier New', Courier, monospace;
             min-height: 100vh;
-            position: relative;
+            margin: 0;
         }
 
-        /* Üst qatda yüngül qaralma (Vignette) effekti */
+        /* VIGNETTE EFFECT */
         body::after {
             content: "";
             position: fixed;
@@ -50,7 +50,7 @@
             left: 0;
             width: 100%;
             overflow: hidden;
-            background: black;
+            background: transparent; /* Glitch arxasını şəffaf etdik */
             clip: rect(0, 900px, 0, 0);
         }
         .glitch::before { animation: glitchTop 3s infinite linear alternate-reverse; text-shadow: -1px 0 #fff; }
@@ -62,7 +62,7 @@
         .terminal-box {
             border: 1px solid #fff;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.8); /* Arxa planın görünməsi üçün bir az şəffaflıq */
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(2px);
         }
 
@@ -75,7 +75,7 @@
         }
 
         .info-card {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid #333;
             padding: 20px;
             transition: all 0.2s ease;
@@ -92,7 +92,21 @@
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        header { border-bottom: 1px solid #fff; padding: 20px 0; margin-bottom: 40px; background: black; }
+        /* HEADER & FOOTER DƏYİŞİKLİKLƏRİ */
+        header { 
+            border-bottom: 1px solid #fff; 
+            padding: 20px 0; 
+            margin-bottom: 40px; 
+            background: transparent !important; /* Fonu şəffaf etdik */
+        }
+        
+        footer { 
+            border-top: 1px solid #fff; 
+            padding: 40px 0; 
+            margin-top: 40px;
+            background: transparent !important; /* Fonu şəffaf etdik */
+        }
+
         .nav-link { color: #fff; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; border: 1px solid transparent; padding: 5px 10px; transition: 0.3s; }
         .nav-link:hover { border-color: #fff; }
 
@@ -118,7 +132,7 @@
 </head>
 <body class="px-6">
 
-    <header class="max-w-4xl mx-auto flex justify-between items-center sticky top-0 z-10">
+    <header class="max-w-4xl mx-auto flex justify-between items-center">
         <div class="glitch" data-text="NIJAT SHIKHALIYEV">NIJAT SHIKHALIYEV</div>
         <nav class="space-x-2">
             <a href="index.html" class="nav-link">Home</a>
@@ -165,14 +179,14 @@
             </div>
         </div>
 
-        <div class="thm-aligner" style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
+        <div class="thm-aligner">
             <iframe 
                 src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3632634"  
                 scrolling="no">
             </iframe>
         </div>
 
-        <footer class="border-t border-white py-10 flex flex-col items-center gap-4 bg-black w-full">
+        <footer class="max-w-4xl mx-auto flex flex-col items-center gap-4">
             <div class="flex gap-10 items-center">
                 <a href="https://github.com/nijatshikhaliyev" target="_blank" class="text-white text-2xl social-link"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/nijatshikhaliyev" target="_blank" class="text-white text-2xl social-link"><i class="fab fa-linkedin"></i></a>
